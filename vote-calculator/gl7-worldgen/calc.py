@@ -40,7 +40,7 @@ def parseLine(line: str):
     results = ParseResult();
     score_parse_start = 5
     score_parse_end = 10;
-    results.scores = [0,0,0,0,0,0,0,0,0,0,0,0,0] #Ig  I really don't understand how python classes work??? Cuz it SHOULD „reset” in a normal goddamn language, every time I make a new instance. But here it just... Doesn't. It's like the class wasn't even there and this thing was a global object. Is calling ClassName() not how I create a new instance? But doing new ClassName() doesn't work, either???
+    results.scores = [0,0,0,0,0,0,0,0,0,0,0,0,0] #Ig I really don't understand how python classes work??? Cuz it SHOULD „reset” in a normal goddamn language, every time I make a new instance. You know, it should actually be a new one. But here it just... Isn't. It's like the class wasn't even there and this thing was a global object. Is calling ClassName() not how I create a new instance? But doing new ClassName() doesn't work, either??? How tf do I get a new instance, instead of just referencing the same one, over and over again???? Why did I pick Python again?
      
     #Date:0
     #Name:1
