@@ -41,7 +41,7 @@ def parseLine(line: str):
     score_parse_start = 5
     score_parse_end = 10;
     results.scores = [0,0,0,0,0,0,0,0,0,0,0,0,0] #Ig I really don't understand how python classes work??? Cuz it SHOULD „reset” in a normal goddamn language, every time I make a new instance. You know, it should actually be a new one. But here it just... Isn't. It's like the class wasn't even there and this thing was a global object. Is calling ClassName() not how I create a new instance? But doing new ClassName() doesn't work, either??? How tf do I get a new instance, instead of just referencing the same one, over and over again???? Why did I pick Python again?
-     
+    
     #Date:0
     #Name:1
     #Accept:2
@@ -50,11 +50,13 @@ def parseLine(line: str):
     results.preffered_range = anwsers[score_parse_end]; #ie. 10
     
     for index in range(score_parse_start, score_parse_end):
-        max_score = 5; # <-- COINCIDENCE THAT THIS IS ALSO FIVE
-        score = max_score-(index-score_parse_start); #5,6,7,8,9 --> 0,1,2,3,4 --> 5,4,3,2,1
+        max_score = 4; # <-- COINCIDENCE THAT THIS IS ALSO FIVE
+        score = max_score-(index-score_parse_start); #5,6,7,8,9 --> 0,1,2,3,4 --> 4,3,2,1,0
+        if score == 0:
+            score = 1 # So that the scale is 4,3,2,1,1 instead of 4,3,2,1,0
         results.scores[textToModID(anwsers[index])] = score;
         print("Przyznawanie ", anwsers[index], ":", textToModID(anwsers[index]), " punktów: ", score, sep="");
-
+    
     return results;
 
 def printSkips(skips: int, total: int, valid: int):
@@ -125,7 +127,7 @@ for line in lines:
         continue;
     parsed = parseLine(line);
     cast_votes += 1;
-
+    
     score_BOP += parsed.scores[1];
     score_BYG += parsed.scores[2];
     score_Terralith += parsed.scores[3];
@@ -138,7 +140,7 @@ for line in lines:
     score_Prom += parsed.scores[10];
     score_Atmo += parsed.scores[11];
     score_Envi += parsed.scores[12];
-
+    
     if parsed.tect_or_cont == "oba":
         tect += 1; #Either Python doesn't support n++, or Pylance is stupid.
         cont += 1;
